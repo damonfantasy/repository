@@ -8,8 +8,8 @@ services:
   ports:
       - "8080:80"    
   volumes:
-      - /home/laurent/Documents/Docker/exo10/:/usr/local/apache2/htdocs/
-
+      - /home/laurent/depot/repository/:/usr/local/apache2/htdocs/
+        
 
 
  ubuntu1:
