@@ -1,0 +1,42 @@
+#version: '3.8'
+
+services:
+ 
+ apache:
+  image: httpd:latest
+  container_name: apache_cont
+  ports:
+      - "8080:80"    
+  volumes:
+      - /home/laurent/Documents/Docker/exo10/:/usr/local/apache2/htdocs/
+
+
+
+ ubuntu1:
+  image: ubuntu:latest
+  container_name: ubuntu_cont1
+  volumes:
+      - volume1:/home/root
+  command: bash -c "apt update && apt install iputils-ping -y && tail -f /dev/null"
+  tty: true
+
+
+
+ ubuntu2:
+  image: ubuntu:latest
+  container_name: ubuntu_cont2
+  volumes: 
+      - volume1:/home/root
+  command: bash -c "apt update && apt install curl -y && tail -f /dev/null"
+  tty: true
+
+
+
+networks: # Réseaux personnalisés
+  lan-network:
+    driver: bridge
+
+
+
+volumes:
+  volume1:
